@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+service PlantHappy {
+  rpc GetPlant (PlantRequest) returns (Plant);
+  rpc GetCollection (CollectionRequest) returns (Collection);
+}
+
+message WateringSchedule {
+  int64 id = 1;
+  string frequency = 2;
+  int32 repeating_days = 3;
+}
+
+message Plant {
+  int64 id = 1;
+  string scientific_name = 2;
+  string common_name = 3;
+  WateringSchedule watering_schedule = 4;
+}
+
+message Collection {
+  int64 id = 1;
+  repeated Plant plants = 2;
+}
+
+message PlantRequest {
+ int64 id = 1;
+}
+
+message CollectionRequest {
+  int64 id = 1;
+}
